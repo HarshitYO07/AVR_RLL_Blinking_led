@@ -105,55 +105,29 @@ Bit = 1 → Output, Bit = 0 → Input
 
 
 
-- **Registers**:         [ DDRB ]           [ PORTB ]
-                   |     |            |     |
-Bits (7–0):     [0 0 1 0 0 0 0 0]   [0 0 1 0 0 0 0 0]
-Bit Index:        7 6 5 4 3 2 1 0     7 6 5 4 3 2 1 0
-                    ↑                  ↑
-                   PB5                PB5 (Digital 13)
-
-(1 << PB5) → 0b00100000 → Sets or clears bit 5
-
-
 ## 6. Bitwise Operation Breakdown
 ➤ Set PB5 as Output
-c
-Copy
-Edit
 DDRB |= (1 << PB5);
-makefile
-Copy
-Edit
-Initial:   0b00000000
-Mask:      0b00100000
-Result:    0b00100000 → PB5 becomes OUTPUT
+
+- **Initial**:   0b00000000    &nbsp;&nbsp; //DDRB
+- **Mask**:      0b00100000    &nbsp;&nbsp; //(1<< PB5)
+- **Result**:    0b00100000 → PB5 becomes OUTPUT    &nbsp;&nbsp; //Final DDRB
 
 
 ➤ Set PB5 HIGH (LED ON)
-c
-Copy
-Edit
 PORTB |= (1 << PB5);
-makefile
-Copy
-Edit
-Initial:   0b00000000
-Mask:      0b00100000
-Result:    0b00100000 → PB5 HIGH
+
+- **Initial**:   0b00000000    &nbsp;&nbsp;//PORTB
+- **Mask**:      0b00100000    &nbsp;&nbsp;//(1 << PB5)
+- **Result**:    0b00100000 → PB5 HIGH    &nbsp;&nbsp;//Final PORTB
 
 
 
 ➤ Set PB5 LOW (LED OFF)
-c
-Copy
-Edit
 PORTB &= ~(1 << PB5);
-less
-Copy
-Edit
-Mask:      0b00100000
-Inverted:  0b11011111
-Result:    PORTB & 0b11011111 → PB5 cleared
 
+- **Mask**:      0b00100000   &nbsp;&nbsp;//PORTB
+- **Inverted**:  0b11011111   &nbsp;&nbsp;//~(1 << PB5)
+- **Result**:    PORTB & 0b11011111 → PB5 cleared   &nbsp;&nbsp;//Final PORTB 
 
 
